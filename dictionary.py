@@ -52,14 +52,24 @@ class DictionaryApp:
         edit_button = tk.Button(root, text="Edit Term", command=self.edit_term, width=12)
         edit_button.grid(row=2, column=2, padx=(0, 5), pady=5, sticky=tk.W)
 
+        # Create a frame to hold the Treeview and scrollbar
+        tree_frame = ttk.Frame(root)
+        tree_frame.grid(row=3, column=0, columnspan=4, padx=5, pady=5, sticky='nsew')
 
         # Treeview for displaying terms and descriptions
-        self.treeview = ttk.Treeview(root, columns=("Term", "Description"), show="headings")
+        self.treeview = ttk.Treeview(tree_frame, columns=("Term", "Description"), show="headings")
         self.treeview.heading("Term", text="Term")
         self.treeview.heading("Description", text="Description")
-        self.treeview.column("Term", width=80)  # Adjust the width as needed
-        self.treeview.column("Description", width=320)  # Adjust the width as needed
-        self.treeview.grid(row=3, column=0, columnspan=4, padx=5, pady=5)
+        self.treeview.column("Term", width=80)
+        self.treeview.column("Description", width=320)
+        
+        # Create and configure the scrollbar
+        scrollbar = ttk.Scrollbar(tree_frame, orient="vertical", command=self.treeview.yview)
+        self.treeview.configure(yscrollcommand=scrollbar.set)
+
+        # Pack the Treeview and scrollbar
+        self.treeview.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
 
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.populate_treeview()
