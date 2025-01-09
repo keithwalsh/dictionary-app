@@ -16,11 +16,17 @@ def app_data_path(relative_path):
     return os.path.join(application_path, relative_path)
 
 class DictionaryApp:
-    def __init__(self, root):
+    def __init__(self, root: tk.Tk) -> None:
         self.root = root
         self.dictionary = self.load_data()
 
         self.root.title("Dictionary App")
+        
+        # Add icon
+        icon_path = 'icon.ico'
+        if hasattr(sys, '_MEIPASS'):  # Check if running as exe
+            icon_path = os.path.join(sys._MEIPASS, 'icon.ico')
+        self.root.iconbitmap(icon_path)
 
         # Create an entry field for search
         self.search_entry = tk.Entry(root)
