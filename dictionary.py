@@ -65,17 +65,26 @@ class DictionaryApp:
         self.populate_treeview()
 
     def load_data(self):
+        """Load dictionary data from JSON file with UTF-8 encoding.
+        
+        Returns:
+            dict: Dictionary containing terms and definitions.
+        """
         data_path = app_data_path('data.json')
         try:
-            with open(data_path, 'r') as f:
+            with open(data_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except FileNotFoundError:
             return {}
+        except json.JSONDecodeError:
+            # Handle corrupted JSON file by returning empty dictionary
+            return {}
 
     def save_data(self):
+        """Save dictionary data to JSON file with UTF-8 encoding."""
         data_path = app_data_path('data.json')
-        with open(data_path, 'w') as f:
-            json.dump(self.dictionary, f)
+        with open(data_path, 'w', encoding='utf-8') as f:
+            json.dump(self.dictionary, f, ensure_ascii=False)
 
     def populate_treeview(self):
         for i in self.treeview.get_children():
