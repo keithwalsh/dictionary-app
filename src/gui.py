@@ -124,7 +124,7 @@ class DictionaryApp:
         self.root.destroy() 
     
     def search_terms(self, event: Optional[tk.Event] = None) -> None:
-        """Filter the treeview based on search input.
+        """Filter the treeview based on search input (terms only).
         
         Args:
             event: Optional keyboard event that triggered the search.
@@ -135,10 +135,10 @@ class DictionaryApp:
         for item in self.treeview.get_children():
             self.treeview.delete(item)
         
-        # Populate with filtered results
+        # Populate with filtered results (searching only terms)
         for term, definition in self.dict_manager.get_all_terms().items():
-            if search_text in term.lower() or search_text in definition.lower():
-                self.treeview.insert("", tk.END, values=(term, definition)) 
+            if search_text in term.lower():
+                self.treeview.insert("", tk.END, values=(term, definition))
     
     def edit_term(self) -> None:
         """Handle editing the selected term."""
