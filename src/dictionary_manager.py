@@ -1,37 +1,21 @@
 from typing import Dict
-import json
-import os
-from .utils import app_data_path
+from .data_manager import JsonDataManager
 
 class DictionaryManager:
     """Manages dictionary data operations including loading, saving, and modifications.
     
     This class handles all data-related operations for the dictionary application,
-    providing a clean interface for data manipulation while handling file I/O operations.
+    delegating file I/O operations to the JsonDataManager.
     """
     
     def __init__(self) -> None:
         """Initialize the dictionary manager and load existing data."""
-        self._dictionary: Dict[str, str] = self._load_data()
-    
-    def _load_data(self) -> Dict[str, str]:
-        """Load dictionary data from JSON file with UTF-8 encoding.
-        
-        Returns:
-            Dict[str, str]: Dictionary containing terms and definitions.
-        """
-        data_path = app_data_path('data.json')
-        try:
-            with open(data_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            return {}
+        self._data_manager = JsonDataManager('data.json')
+        self._dictionary: Dict[str, str] = self._data_manager.load()
     
     def save_data(self) -> None:
-        """Save dictionary data to JSON file with UTF-8 encoding."""
-        data_path = app_data_path('data.json')
-        with open(data_path, 'w', encoding='utf-8') as f:
-            json.dump(self._dictionary, f, ensure_ascii=False)
+        """Save dictionary data to storage."""
+        self._data_manager.save(self._dictionary)
     
     def add_term(self, term: str, definition: str) -> None:
         """Add a new term and definition to the dictionary.
