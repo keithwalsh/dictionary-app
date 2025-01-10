@@ -1,7 +1,9 @@
 # Dictionary App
 
-[![codecov](https://codecov.io/gh/keithwalsh/dictionary_app/branch/main/graph/badge.svg)](https://codecov.io/gh/keithwalsh/dictionary-app)
-![Build](https://github.com/keithwalsh/react-spreadsheet-ts/actions/workflows/build.yml/badge.svg)
+[![PyPI version](https://img.shields.io/pypi/v/dictionary-app.svg)](https://pypi.org/project/dictionary-app/)
+[![codecov](https://codecov.io/gh/keithwalsh/dictionary-app/branch/main/graph/badge.svg)](https://codecov.io/gh/keithwalsh/dictionary-app)
+[![Code Climate](https://codeclimate.com/github/keithwalsh/dictionary-app/badges/gpa.svg)](https://codeclimate.com/github/keithwalsh/dictionary-app)
+![Build](https://github.com/keithwalsh/dictionary-app/actions/workflows/build.yml/badge.svg)
 
 A simple desktop application built with Python and Tkinter that allows users to manage a personal dictionary of terms and definitions.
 
@@ -21,6 +23,15 @@ A simple desktop application built with Python and Tkinter that allows users to 
 - PyInstaller (optional, for creating executable)
 
 ## Installation
+
+### Option 1: Install from PyPI
+
+The easiest way to install is via pip:
+```
+pip install dictionary-app
+```
+
+### Option 2: Install from Source
 
 1. Clone the repository:
 ```
