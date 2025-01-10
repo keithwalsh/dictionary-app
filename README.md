@@ -27,8 +27,17 @@ A simple desktop application built with Python and Tkinter that allows users to 
 ### Option 1: Install from PyPI
 
 The easiest way to install is via pip:
-```
+```bash
 pip install dictionary-app
+```
+
+After installation, launch the application using either:
+```
+dictionary-app
+```
+or
+```
+python -m dictionary_app
 ```
 
 ### Option 2: Install from Source

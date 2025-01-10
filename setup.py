@@ -21,4 +21,9 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Topic :: Office/Business",
     ],
+    entry_points={
+        'console_scripts': [
+            'dictionary-app=dictionary_app.main:main',
+        ],
+    },
 )
