@@ -31,3 +31,13 @@ tree.py
 
 # Explicitly include .gitignore
 !.gitignore
+
+# Test files
+.pytest_cache/
+__pycache__/
+.coverage
+htmlcov/
+coverage.xml
+
+# Notes
+NOTES.md
