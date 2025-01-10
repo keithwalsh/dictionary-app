@@ -1,8 +1,9 @@
-# DictionaryApp.spec
+from PyInstaller.utils.hooks import collect_data_files
+
 block_cipher = None
 
 a = Analysis(
-    ['dictionary.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
     datas=[('icon.ico', '.')],
@@ -26,7 +27,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='DictionaryApp',
+    name='Dictionary',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -39,4 +40,4 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon='icon.ico'
-)
+) 
