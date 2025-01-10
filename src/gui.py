@@ -46,6 +46,14 @@ class DictionaryApp:
         self.search_entry = ttk.Entry(main_frame, width=30)
         self.search_entry.grid(row=0, column=1, padx=5, pady=5)
         self.search_entry.bind('<KeyRelease>', self.search_terms)
+        
+        # Add placeholder text and bind focus events
+        self.search_entry.insert(0, "Search terms...")
+        self.search_entry.bind('<FocusIn>', self._on_search_focus_in)
+        self.search_entry.bind('<FocusOut>', self._on_search_focus_out)
+        
+        # Set initial focus to search entry
+        self.search_entry.focus()
 
         # Term and definition entries (now aligned with search)
         ttk.Label(main_frame, text="Term:").grid(row=1, column=0, sticky=tk.W)
@@ -165,3 +173,21 @@ class DictionaryApp:
         item = self.treeview.identify('item', event.x, event.y)
         if item:
             self.edit_term() 
+
+    def _on_search_focus_in(self, event: tk.Event) -> None:
+        """Handle search entry focus in event.
+        
+        Args:
+            event: The focus in event object.
+        """
+        if self.search_entry.get() == "Search terms...":
+            self.search_entry.delete(0, tk.END)
+
+    def _on_search_focus_out(self, event: tk.Event) -> None:
+        """Handle search entry focus out event.
+        
+        Args:
+            event: The focus out event object.
+        """
+        if not self.search_entry.get():
+            self.search_entry.insert(0, "Search terms...") 
