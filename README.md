@@ -1,6 +1,7 @@
 # Dictionary App
 
-[![codecov](https://codecov.io/gh/keithwalsh/dictionary-app/branch/main/graph/badge.svg)](https://codecov.io/gh/keithwalsh/dictionary-app)
+[![codecov](https://codecov.io/gh/keithwalsh/dictionary_app/branch/main/graph/badge.svg)](https://codecov.io/gh/keithwalsh/dictionary-app)
+![Build](https://github.com/keithwalsh/react-spreadsheet-ts/actions/workflows/build.yml/badge.svg)
 
 A simple desktop application built with Python and Tkinter that allows users to manage a personal dictionary of terms and definitions.
 
