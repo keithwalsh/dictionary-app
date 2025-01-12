@@ -97,7 +97,7 @@ def test_edit_term(app):
     app.term_entry = Mock()
     app.definition_entry = Mock()
     app.treeview.selection.return_value = ['item1']
-    app.treeview.item.return_value = {'values': ('test', 'definition')}
+    app.treeview.item.return_value = {'values': ('test', 'definition', 'label1, label2')}
     
     # Execute
     app.edit_term()

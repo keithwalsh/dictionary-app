@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Dict, Any, List
 import json
 import os
 from .utils import app_data_path
@@ -18,11 +18,17 @@ class JsonDataManager:
         """
         self.filepath = app_data_path(filename)
     
-    def load(self) -> Dict[str, Any]:
+    def load(self) -> Dict[str, Dict[str, Any]]:
         """Load data from JSON file with UTF-8 encoding.
         
         Returns:
-            Dict[str, Any]: Dictionary containing loaded data.
+            Dict[str, Dict[str, Any]]: Dictionary containing loaded data with structure:
+            {
+                "term": {
+                    "definition": str,
+                    "labels": List[str]
+                }
+            }
         """
         try:
             with open(self.filepath, 'r', encoding='utf-8') as f:
